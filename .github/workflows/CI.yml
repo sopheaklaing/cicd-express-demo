@@ -10,7 +10,7 @@ on:
     branch: [
       main
     ]
-job:
+jobs:
   test:
     runs-on: ubuntu-latest
 
