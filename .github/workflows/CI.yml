@@ -37,11 +37,27 @@ jobs:
       - name: Lint code
         run: npm run lint
 
-      # Step 5: Run tests
-      - name: Run tests
-        run: npm test
+      # Step 5: Run tests with coverage
+      - name: Run tests with coverage
+        run: npm test -- --coverage
 
       # Step 6: Show success message
       - name: Success
         if: success()
         run: echo "✅ All tests passed!"
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      # Step 1: Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Deploy to staging
+      - name: Deploy to staging
+        run: echo " Deploying to staging server..."
+
+        # Add your real deployment commands here
