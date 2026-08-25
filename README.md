@@ -34,12 +34,15 @@ npm test
 ## API Endpoints
 
 ### GET /health
+
 Returns server health status.
 
 ### POST /calculate
+
 Performs calculations.
 
 **Body:**
+
 ```json
 {
   "operation": "add",
@@ -49,14 +52,17 @@ Performs calculations.
 ```
 
 ### GET /users
+
 Returns all users.
 
 ### GET /users/:id
+
 Returns user by ID.
 
 ## CI/CD Pipeline
 
 Every push to main triggers:
+
 1. Linting with ESLint
 2. Automated tests with Jest
 3. Tests run on Node.js 18.x and 20.x

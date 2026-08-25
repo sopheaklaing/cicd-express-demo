@@ -16,32 +16,32 @@ app.get('/health', (req, res) => {
 // Simple calculation API
 app.post('/calculate', (req, res) => {
   const { operation, a, b } = req.body;
-  
+
   if (!operation || a === undefined || b === undefined) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
-  
+
   let result;
   switch (operation) {
-  case 'add':
-    result = a + b;
-    break;
-  case 'subtract':
-    result = a - b;
-    break;
-  case 'multiply':
-    result = a * b;
-    break;
-  case 'divide':
-    if (b === 0) {
-      return res.status(400).json({ error: 'Cannot divide by zero' });
-    }
-    result = a / b;
-    break;
-  default:
-    return res.status(400).json({ error: 'Invalid operation' });
+    case 'add':
+      result = a + b;
+      break;
+    case 'subtract':
+      result = a - b;
+      break;
+    case 'multiply':
+      result = a * b;
+      break;
+    case 'divide':
+      if (b === 0) {
+        return res.status(400).json({ error: 'Cannot divide by zero' });
+      }
+      result = a / b;
+      break;
+    default:
+      return res.status(400).json({ error: 'Invalid operation' });
   }
-  
+
   res.json({ result });
 });
 
@@ -56,7 +56,7 @@ app.get('/users', (req, res) => {
 });
 
 app.get('/users/:id', (req, res) => {
-  const user = users.find(u => u.id === parseInt(req.params.id));
+  const user = users.find((u) => u.id === parseInt(req.params.id));
   if (!user) {
     return res.status(404).json({ error: 'User not found' });
   }
