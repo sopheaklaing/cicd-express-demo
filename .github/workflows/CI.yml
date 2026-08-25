@@ -1,0 +1,48 @@
+name : CI Pipeline
+
+#Trigger on push and pull requests to main 
+on:
+  push:
+    branch: [
+      main
+    ]
+  pull:
+    branch: [
+      main
+    ]
+job:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x , 20.x]
+
+    steps: 
+      # step 1: Checkout code 
+      - name: Checkout code 
+        users: actions/checkout@v3
+      #step 2: Setup node.js
+      - name: Setup Node.js ${{matrix.node-version}}
+        with: 
+          node-version: ${{matrix.node-version}}
+          cache: 'npm'
+
+      #step 3: install dependencies
+      - name: Install dependencies
+        run: run ci
+
+      #step 4: Run linter
+      - name: Lint code 
+        run: npm run lint 
+
+      #step 5: run test
+      - name: Run test
+        run: npm test
+
+      #step 6: Show success message
+      - name: Success
+        if: success()
+        run: echo "✅ All tests passed!"
+
+       
