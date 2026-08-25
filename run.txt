@@ -1,0 +1,15 @@
+cd cicd-express-demo
+npm init -y
+
+# Run linter
+npm run lint
+
+# Run tests
+npm test
+
+# Start server
+npm start
+
+npm install --save-dev @eslint/js globals
+
+npm install --save-dev cross-env

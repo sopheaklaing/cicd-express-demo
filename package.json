@@ -1,0 +1,27 @@
+{
+  "name": "cicd-express-demo",
+  "version": "1.0.0",
+  "description": "CI/CD Express Demo",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+   "test": "cross-env NODE_ENV=test node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "lint": "eslint ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "cross-env": "^10.1.0",
+    "eslint": "^10.9.1",
+    "globals": "^17.11.0",
+    "jest": "^30.4.2",
+    "supertest": "^7.2.2"
+  }
+}
